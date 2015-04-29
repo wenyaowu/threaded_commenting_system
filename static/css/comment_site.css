@@ -1,0 +1,16 @@
+.comment-list{
+    list-style-type: none;
+    background-color: #FAFAFA;
+    padding: 4px;
+    margin: auto;
+    display: table;
+}
+
+#post-meta{
+    color: #6E6E6E;
+    font-size:12px;
+}
+
+#post-action{
+    font-size:12px;
+}

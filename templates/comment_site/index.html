@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+{% load humanize %}
+
+{% block title %}comment site demo{% endblock %}
+{% block head %}{% endblock %}
+{% block body %}
+<div class="container">
+<h1> Threaded Commenting System Demo</h1>
+</div>
+
+<div class="container">
+<div class="col-xs-8 col-sm-8">
+<form id="postcomment" method="post" action="">
+        {{form.as_p}}
+        <p><input type="submit" value="Submit" /></p>
+        {% csrf_token %}
+    </form>
+    <ul id="commenters">
+    {% for c in comment_tree %}
+        <li id="{{c.id}}" class="comment-list" style="margin-left:{{c.depth|add:c.depth}}em;">
+            <p class="poster" id="post-meta">Username-{{c.pub_datetime|naturaltime}}
+            <a href="" class="span-shrink" id="shrink" >[-]</a>
+            </p>
+            <p id="comment-text">{{c.text}}</p>
+            <p><a href="" class="reply" id="post-action">reply</a></p>
+        </li>
+    {% empty %}
+        <li>No comment available</li>
+    {% endfor %}
+    </ul>
+</div>
+</div>
+
+
+{% endblock %}
+
